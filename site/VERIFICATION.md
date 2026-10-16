@@ -19,6 +19,19 @@ These checks concern the website. The app release and installed Mac app were not
 
 - The landing page opens with the introduction and download buttons, followed immediately by closed-lid mode and the 19-second launch film.
 - The landing-page privacy feature and the Three ways to stay awake feature were removed.
-- The page, tour, and popup share one launch-film player. Its charcoal circular button changes between play, pause, and replay using actual media events. Native controls remain the fallback without JavaScript.
+- The page, tour, and popup share one launch-film player. Its charcoal circular controls provide restart and play/pause using actual media events. Native controls remain the fallback without JavaScript.
 - Browser checks covered playback, keyboard pause, sound, reaching the film's end, and replay from the beginning without a media error. The MP4's approved checksum remains unchanged.
 - Phone and tablet frames at 320, 390, and 768 CSS pixels were reviewed. The mobile play/pause button has a 44-pixel touch target and stays inside the video frame.
+
+## Replay and automatic playback
+
+Checked October 17, 2026 on the local site in Chrome.
+
+- A separate restart button sits immediately left of play/pause. Restarting after the film ended reset playback from 19 seconds to the beginning and resumed it without a media error.
+- The film stayed paused before reaching it, played muted upon entering view, paused after scrolling to FAQ, and resumed upon returning. A manual pause stayed paused while in view; a fresh mouse hover resumed playback.
+- Opening the tour popup played its film and paused the background film. Closing the popup stopped its playback.
+- At a 390-pixel viewport, both restart and play/pause had 44-pixel touch targets, stayed inside the film, and caused no horizontal page overflow. The temporary viewport override was reset after testing.
+- No browser warnings or errors were recorded during these checks. The build still validates all 15 generated pages and the approved MP4 checksum.
+- Automatic playback respects reduced-motion preferences. The play button remains available if a browser blocks autoplay; sound is optional through the unmute control.
+
+These checks used localhost. Cloudflare deployment was not checked or awaited for this change.

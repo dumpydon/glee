@@ -57,4 +57,3 @@ addEventListener('message',event=>{
 })
 // Release labels are local metadata; downloads remain usable without JavaScript.
 fetch('release.json').then(r=>r.ok?r.json():null).then(release=>{if(!release)return;all('[data-version]').forEach(el=>el.textContent=release.version)}).catch(()=>{})
-document.addEventListener('visibilitychange',()=>{if(document.hidden)all('video').forEach(video=>video.pause())})
