@@ -1,0 +1,15 @@
+Glee
+Copyright (c) 2026 dumpydon.
+
+Glee's first-party source and assets are provided under the GNU Affero General
+Public License, version 3 only (AGPL-3.0-only). See LICENSE for the complete terms.
+
+This Glee release includes updated product branding, app/helper identities,
+free sessions without account or activation, SDK-aware native controls, and an
+administrator-approved local helper setup. The helper retains bounded leases,
+battery/temperature limits and durable restoration of the prior sleep setting.
+
+Third-party components retain their own copyright and license notices.
+Apple frameworks are supplied by macOS. Sparkle is distributed under its own
+license; Apple-signed builds that bundle it include Sparkle-LICENSE.txt in the
+app's Contents/Resources directory. Local builds do not bundle Sparkle.

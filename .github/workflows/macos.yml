@@ -1,0 +1,76 @@
+name: macOS build and tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: macos-15
+    timeout-minutes: 20
+    env:
+      # Use the supported SDK and avoid the observed Swift frontend
+      # crash in this runner's default Xcode 16.4 toolchain.
+      DEVELOPER_DIR: /Applications/Xcode_26.1.1.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Record selected Apple toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+          xcrun --sdk macosx --show-sdk-version
+      - name: Test session, helper, identity, and packaging policies
+        run: |
+          set -o pipefail
+          ./script/check.sh 2>&1 | tee "$RUNNER_TEMP/glee-check.log"
+      - name: Report focused check diagnostics
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          log = Path(os.environ["RUNNER_TEMP"]) / "glee-check.log"
+          if log.exists():
+              lines = log.read_text(errors="replace").splitlines()
+              selected = set(range(max(0, len(lines) - 35), len(lines)))
+              for index, line in enumerate(lines):
+                  if "error:" in line or "Issue recorded" in line or "failed" in line.lower():
+                      selected.update(range(max(0, index - 2), min(len(lines), index + 7)))
+              excerpt = "\n".join(lines[index] for index in sorted(selected))[-30000:]
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+                  summary.write("## Glee check diagnostics\n\n```text\n" + excerpt + "\n```\n")
+              # Structured annotations are available beside the failed check,
+              # including to readers without access to raw workflow logs.
+              markers = [index for index, line in enumerate(lines)
+                         if "error:" in line or "Issue recorded" in line]
+              for index in markers[:12]:
+                  message = "\n".join(lines[max(0, index - 1):min(len(lines), index + 7)])
+                  message = message.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+                  print("::error title=Glee check diagnostic::" + message)
+              contexts = [index for index, line in enumerate(lines)
+                          if "While evaluating request" in line or "While silgen" in line]
+              for index in contexts[:8]:
+                  message = "\n".join(lines[index:min(len(lines), index + 5)])
+                  message = message.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+                  print("::error title=Glee compiler context::" + message)
+          PY
+      - name: Build a free local app
+        env:
+          GLEE_BUILD_CONFIGURATION: release
+          GLEE_UNIVERSAL: "1"
+        run: ./script/build_and_run.sh --build-only
+      - name: Verify Apple silicon and Intel executables
+        run: |
+          xcrun lipo dist/Glee.app/Contents/MacOS/Glee -verify_arch arm64 x86_64
+          xcrun lipo dist/Glee.app/Contents/Library/HelperTools/GleeHelper -verify_arch arm64 x86_64
+      - name: Archive the app with framework/bundle metadata
+        run: ditto -c -k --sequesterRsrc --keepParent dist/Glee.app dist/Glee-2.0.0-local.zip
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: Glee-2.0.0-local
+          path: dist/Glee-2.0.0-local.zip
+          if-no-files-found: error
