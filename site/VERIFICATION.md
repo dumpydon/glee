@@ -14,3 +14,11 @@ Checked October 16, 2026.
 - Wrangler's deployment dry run bundled the Worker successfully. The site uses only a static-assets binding, with no database or secrets.
 
 These checks concern the website. The app release and installed Mac app were not rebuilt or replaced for this work. The web app panels are illustrations and do not prevent sleep or install helpers.
+
+## Opening layout and launch-film controls
+
+- The landing page opens with the introduction and download buttons, followed immediately by closed-lid mode and the 19-second launch film.
+- The landing-page privacy feature and the Three ways to stay awake feature were removed.
+- The page, tour, and popup share one launch-film player. Its charcoal circular button changes between play, pause, and replay using actual media events. Native controls remain the fallback without JavaScript.
+- Browser checks covered playback, keyboard pause, sound, reaching the film's end, and replay from the beginning without a media error. The MP4's approved checksum remains unchanged.
+- Phone and tablet frames at 320, 390, and 768 CSS pixels were reviewed. The mobile play/pause button has a 44-pixel touch target and stays inside the video frame.

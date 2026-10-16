@@ -8,14 +8,16 @@ const output = resolve(site, '../dist/site')
 await rm(output, {recursive:true, force:true})
 await mkdir(output, {recursive:true})
 await cp(resolve(site,'download'), resolve(output,'download'), {recursive:true})
-const snippets = Object.fromEntries(await Promise.all(['nav','footer','download-menu'].map(async name=>[name,await readFile(resolve(site,`download/${name}.html`),'utf8')])))
+const snippetNames=['nav','footer','download-menu','film-player']
+const snippets = Object.fromEntries(await Promise.all(snippetNames.map(async name=>[name,await readFile(resolve(site,`download/${name}.html`),'utf8')])))
 for (const entry of await readdir(resolve(output,'download'))) {
-  if (!entry.endsWith('.html') || ['nav.html','footer.html','download-menu.html'].includes(entry)) continue
+  if (!entry.endsWith('.html') || snippetNames.some(name=>entry===name+'.html')) continue
   const path = resolve(output,'download',entry)
   const html = (await readFile(path,'utf8'))
     .replaceAll('<!-- SITE_NAV -->',snippets.nav)
     .replaceAll('<!-- SITE_FOOTER -->',snippets.footer)
     .replaceAll('<!-- DOWNLOAD_MENU -->',snippets['download-menu'])
+    .replaceAll('<!-- FILM_PLAYER -->',snippets['film-player'])
   await writeFile(path,html)
 }
 await cp(resolve(output,'download/index.html'), resolve(output,'index.html'))
@@ -24,7 +26,7 @@ for (const route of ['install','privacy','changelog','first-launch','tour']) {
   await mkdir(resolve(output,route), {recursive:true})
   await cp(resolve(output,`download/${route}.html`), resolve(output,`${route}/index.html`))
 }
-for (const name of ['nav','footer','download-menu']) await rm(resolve(output,`download/${name}.html`))
+for (const name of snippetNames) await rm(resolve(output,`download/${name}.html`))
 const assets = resolve(output,'download/assets')
 await mkdir(assets, {recursive:true})
 for (const [source,target] of [

@@ -11,7 +11,7 @@ const errors=[],pages=(await files(root)).filter(path=>path.endsWith('.html'))
 async function exists(path){try{return (await stat(path)).isFile()}catch{return false}}
 for(const path of pages){
   const html=await readFile(path,'utf8')
-  if(/<!-- (SITE_NAV|SITE_FOOTER|DOWNLOAD_MENU) -->/.test(html))errors.push('Unexpanded component: '+path)
+  if(/<!-- (SITE_NAV|SITE_FOOTER|DOWNLOAD_MENU|FILM_PLAYER) -->/.test(html))errors.push('Unexpanded component: '+path)
   if(/WakeBee|Apply Vigil|dumpydon\/vigil\//i.test(html))errors.push('Unadapted product content: '+path)
   const url=new URL(path.slice(root.length)||'/', 'https://glee.dumpydon.workers.dev')
   const baseMatch=html.match(/<base[^>]+href="([^"]+)"/),base=baseMatch?new URL(baseMatch[1],url):url

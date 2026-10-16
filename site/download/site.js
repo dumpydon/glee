@@ -1,8 +1,10 @@
 // Copyright © 2026 dumpydon. SPDX-License-Identifier: AGPL-3.0-only
 // Presentation only: no analytics, accounts, persistence, or Mac power access.
+import {setupFilmPlayers} from './film-player.js'
 const one=(s,r=document)=>r.querySelector(s)
 const all=(s,r=document)=>Array.from(r.querySelectorAll(s))
 const motion=matchMedia('(prefers-reduced-motion: reduce)')
+setupFilmPlayers()
 const nav=one('.navtoggle'),navMenu=one('#navmenu')
 function navClose(){navMenu?.classList.remove('on');nav?.setAttribute('aria-expanded','false')}
 nav?.addEventListener('click',()=>{const open=navMenu.classList.toggle('on');nav.setAttribute('aria-expanded',String(open))})
@@ -23,7 +25,7 @@ function hideToast(){toast?.classList.remove('on');toast?.setAttribute('aria-hid
 all('[data-download]').forEach(link=>link.addEventListener('click',()=>{menusClose();navClose();if(!toast)return;toast.classList.add('on');toast.inert=false;toast.setAttribute('aria-hidden','false');clearTimeout(toastTimer);toastTimer=setTimeout(hideToast,16000)}))
 one('#dltx')?.addEventListener('click',hideToast)
 const modal=one('.video-modal')
-all('[data-tour]').forEach(link=>link.addEventListener('click',e=>{if(!modal||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();modal.showModal();document.body.style.overflow='hidden';one('.modal-close',modal).focus()}))
+all('[data-tour]').forEach(link=>link.addEventListener('click',e=>{if(!modal||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();all('video').forEach(video=>video.pause());modal.showModal();document.body.style.overflow='hidden';one('.modal-close',modal).focus()}))
 function closeTour(){if(!modal?.open)return;modal.close()}
 one('.modal-close',modal||document.createElement('div'))?.addEventListener('click',closeTour)
 modal?.addEventListener('click',e=>{if(e.target===modal){const r=modal.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeTour()}})
