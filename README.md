@@ -88,6 +88,10 @@ Run the checks with:
 
 See the [development guide](docs/DEVELOPMENT.md) for toolchains, helper setup, packaging, and release options.
 
+## Website
+
+The [Glee download website](https://glee.dumpydon.workers.dev/) lives in [`site/`](site). Cloudflare automatically builds and deploys the website after every push to `main`. See the [website guide](site/README.md) for the build settings and local preview commands. Mac app releases are managed separately.
+
 ## How it's built
 
 | Module | Responsibility |
