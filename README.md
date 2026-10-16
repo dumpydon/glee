@@ -14,6 +14,7 @@
 </p>
 
 <p align="center">
+  <a href="https://glee.dumpydon.workers.dev/">Website &amp; install guide</a> ·
   <a href="https://github.com/dumpydon/glee/releases/latest">Download for Mac</a> ·
   <a href="#build-from-source">Build from source</a> ·
   <a href="https://github.com/dumpydon/glee/issues">Report a bug</a> ·

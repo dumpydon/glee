@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Glee · Interactive session illustration</title><link rel="stylesheet" href="session.css"><script type="module" src="session.js"></script></head>
+<body>
+<main class="panel" aria-label="Illustrated Glee session controls">
+  <div class="preview-label"><img src="../assets/app-icon-128.png" width="20" height="20" alt=""><b>Glee</b><span>Interactive illustration</span></div>
+  <div class="setup-view">
+    <div class="mode-picker" role="tablist" aria-label="Session mode"><button id="mode-timer" role="tab" aria-selected="true" aria-controls="timer-view" data-mode="timer">Timer</button><button id="mode-until" role="tab" aria-selected="false" aria-controls="until-view" tabindex="-1" data-mode="until">Until</button><button id="mode-unlimited" role="tab" aria-selected="false" aria-controls="unlimited-view" tabindex="-1" data-mode="unlimited">Unlimited</button></div>
+    <div id="timer-view" role="tabpanel" aria-labelledby="mode-timer"><div class="duration"><label><input type="number" min="0" max="24" value="2" aria-label="Hours"><span>Hours</span></label><i>:</i><label><input type="number" min="0" max="59" value="0" aria-label="Minutes"><span>Minutes</span></label></div><div class="presets" aria-label="Duration presets"><button data-minutes="5">5 min</button><button data-minutes="15">15 min</button><button data-minutes="30">30 min</button><button data-minutes="60">1 hour</button><button data-minutes="120">2 hours</button><button data-minutes="240">4 hours</button></div></div>
+    <div id="until-view" role="tabpanel" aria-labelledby="mode-until" hidden><label class="until-label">Stay awake until<input type="time" value="11:41" aria-label="Session end time"></label><p class="mode-description">Pick a time to finish.</p></div>
+    <div id="unlimited-view" role="tabpanel" aria-labelledby="mode-unlimited" hidden><div class="infinity" aria-hidden="true">∞</div><p class="mode-description">Until you stop it</p></div>
+    <button class="session-button" id="start"><span aria-hidden="true">▶</span> Start session</button>
+  </div>
+  <div class="active-view" hidden><div class="active-status"><i></i>Session active</div><div class="countdown" aria-label="Time remaining">02:00:00</div><p class="ends-at">Your Mac stays awake.</p><div class="active-actions"><button id="extend">+15 min</button><button class="session-button" id="end"><span aria-hidden="true">■</span> End session</button></div></div>
+  <section class="lid-card"><div class="lid-heading"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 17V5h16v12M2 19h20l-2-2H4z"/></svg><b>Closed-lid mode</b><span class="info" aria-hidden="true">ⓘ</span><button class="switch" role="switch" aria-label="Illustrate closed-lid mode" aria-checked="false"><i></i></button></div><p class="lid-status">☾ &nbsp; Off</p><p class="lid-detail">Your Mac sleeps when you close the lid.</p></section>
+  <div class="panel-bottom"><span>⚙ &nbsp; Settings</span><span>⏻ &nbsp; Quit &nbsp; ···</span></div>
+  <p class="preview-note" role="status">Website preview · No system changes</p>
+</main>
+</body></html>

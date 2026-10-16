@@ -18,3 +18,7 @@ __pycache__/
 # Private media render diagnostics.
 *.render.log
 *.render.json
+
+# Download website build tools and local Worker state.
+node_modules/
+.wrangler/

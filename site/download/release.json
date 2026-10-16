@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "released": "2026-10-16",
+  "minimumMacOS": "14",
+  "architecture": "Universal · Apple silicon & Intel",
+  "dmg": "https://github.com/dumpydon/glee/releases/download/v2.0.0/Glee-2.0.0.dmg",
+  "zip": "https://github.com/dumpydon/glee/releases/download/v2.0.0/Glee-2.0.0.zip",
+  "checksums": "https://github.com/dumpydon/glee/releases/download/v2.0.0/SHA256SUMS.txt",
+  "release": "https://github.com/dumpydon/glee/releases/tag/v2.0.0",
+  "dmgBytes": 3192657,
+  "dmgSHA256": "587baa5544489f0c0cd15b793e39f0c8ad514706011ff59ce8e278d562096132"
+}
