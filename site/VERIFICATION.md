@@ -35,3 +35,12 @@ Checked October 17, 2026 on the local site in Chrome.
 - Automatic playback respects reduced-motion preferences. The play button remains available if a browser blocks autoplay; sound is optional through the unmute control.
 
 These checks used localhost. Cloudflare deployment was not checked or awaited for this change.
+
+## Closed-laptop illustration
+
+Checked October 26, 2026 on the local site in Chrome.
+
+- Replaced the separately transformed CSS lid and base with a single SVG. The flat lid, rim, seam, and base follow the same outline and perspective.
+- Reviewed the closed-lid section at desktop size and phone viewports measuring 320 and 391 CSS pixels. The image loaded, the status card stayed below the laptop, and neither phone viewport had horizontal page overflow.
+- The illustration scales in the document flow without a fixed scene height. Temporary viewport overrides were reset after testing.
+- All 15 generated pages, local assets, scripts, release links, and the approved video checksum passed `npm run check`.
