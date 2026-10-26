@@ -45,7 +45,7 @@ Checked October 26, 2026 on the local site in Chrome.
 - The illustration scales in the document flow without a fixed scene height. Temporary viewport overrides were reset after testing.
 - All 15 generated pages, local assets, scripts, release links, and the approved video checksum passed `npm run check`.
 
-## Rotating closed MacBook
+## Rotating closed MacBook (initial canvas version)
 
 Checked October 26, 2026 on the local site in Chrome.
 
@@ -53,3 +53,14 @@ Checked October 26, 2026 on the local site in Chrome.
 - Observed changing angles across the turn, paused the model at 135 degrees, and confirmed it stayed still until Resume. Scrolling to FAQ stopped rendering; returning resumed from the same angle.
 - The 320-CSS-pixel phone layout had no horizontal overflow. Its pause/resume button measured 44 pixels, and the model stayed above the status card.
 - The renderer uses no additional libraries, stops when offscreen or the document is hidden, and retains the approved static SVG for reduced-motion preferences or unavailable JavaScript/canvas.
+
+## Slim midnight 3D showcase
+
+Checked October 26, 2026 on the local site in Chrome.
+
+- Replaced the initial planar turntable with a perspective 3D model. A smooth 28-second loop banks, tilts, and turns the closed chassis, with a small pointer response and moving metal reflections.
+- The final model uses a thin Air-style chassis, midnight anodized metal, narrow lid seams, a recessed hinge, charging and two USB-C ports on the left, and audio on the right. The static SVG fallback also uses a thinner midnight body.
+- Reviewed desktop and 320-CSS-pixel phone layouts. The phone page had no horizontal overflow, the motion button measured 44 pixels, and the model stayed within its stage above the status card.
+- Pause held the pose; Resume restarted motion. Scrolling to FAQ paused the model, and returning resumed it. The Glee logo remained centered above the chassis.
+- The Three.js model bundle is served locally and loaded on visibility. Reduced-motion preferences, missing WebGL, and loading errors retain the still illustration. The published build includes Three.js's MIT license.
+- The build checks the generated JavaScript, all 15 HTML pages, links, assets, release destination, and unchanged launch-video checksum.

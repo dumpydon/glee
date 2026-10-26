@@ -2,12 +2,15 @@
 import {cp, mkdir, rm, writeFile, readFile, readdir} from 'node:fs/promises'
 import {fileURLToPath} from 'node:url'
 import {resolve, dirname} from 'node:path'
+import {build} from 'esbuild'
 
 const site = dirname(fileURLToPath(import.meta.url))
 const output = resolve(site, '../dist/site')
 await rm(output, {recursive:true, force:true})
 await mkdir(output, {recursive:true})
 await cp(resolve(site,'download'), resolve(output,'download'), {recursive:true})
+// Keep the controller small. Its local 3D bundle loads only near the showcase.
+await build({entryPoints:[resolve(site,'download/laptop-model.js')],outfile:resolve(output,'download/laptop-model.js'),bundle:true,minify:true,format:'esm',target:['safari16','chrome100'],legalComments:'linked'})
 const snippetNames=['nav','footer','download-menu','film-player']
 const snippets = Object.fromEntries(await Promise.all(snippetNames.map(async name=>[name,await readFile(resolve(site,`download/${name}.html`),'utf8')])))
 for (const entry of await readdir(resolve(output,'download'))) {
@@ -29,6 +32,7 @@ for (const route of ['install','privacy','changelog','first-launch','tour']) {
 for (const name of snippetNames) await rm(resolve(output,`download/${name}.html`))
 const assets = resolve(output,'download/assets')
 await mkdir(assets, {recursive:true})
+await cp(resolve(site,'node_modules/three/LICENSE'),resolve(assets,'three-LICENSE.txt'))
 for (const [source,target] of [
   ['docs/branding/thumbnail-256.png','app-icon.png'],
   ['docs/branding/thumbnail-128.png','app-icon-128.png'],

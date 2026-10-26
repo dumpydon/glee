@@ -18,9 +18,9 @@ nav .wrap{border:1px solid #ffffff05;background:rgba(20,25,20,.6);box-shadow:0 8
 .lid-scene{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;max-width:730px;margin:35px auto 0}
 .lid-halo{position:absolute;left:50%;top:52%;width:90%;height:75%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,#89ce2c25,transparent 68%);filter:blur(20px);z-index:-1}
 .lid-art{position:relative;width:140px;height:140px;object-fit:contain;filter:drop-shadow(0 12px 30px #95ce1b25)}
-.laptop-stage{position:relative;width:690px;max-width:100%;aspect-ratio:5/2;flex-shrink:0;margin-top:-10px}
+.laptop-stage{position:relative;width:730px;max-width:100%;aspect-ratio:15/7;flex-shrink:0;margin-top:-12px}
 .laptop-stage [hidden]{display:none!important}
-.laptop{display:block;width:100%;height:auto}
+.laptop{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain}
 .laptop-canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
 .laptop-motion{position:absolute;right:12px;bottom:9px;display:grid;place-items:center;width:36px;height:36px;border:1px solid #b6ed7329;border-radius:50%;background:#182016cc;backdrop-filter:blur(12px);color:#d6e8c5;cursor:pointer;transition:background .2s ease}
 .laptop-motion:hover{background:#2b3b23}

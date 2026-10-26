@@ -20,6 +20,8 @@ npm run dev
 
 `download/` contains the editable HTML, CSS, and JavaScript. `build.mjs` copies these pages and the canonical app artwork and launch video into `../dist/site/`. The preview uses the same Worker and static asset routing as production.
 
+The closed-laptop showcase uses `download/laptop-model.js` for its 3D geometry, materials, and motion. The build bundles Three.js into a local asset; `laptop-scene.js` loads it only when the illustration enters view. Reduced-motion preferences and unsupported browsers use `assets/closed-macbook.svg`. The Three.js license is included in the published assets and in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
 ## Automatic deployment
 
 Cloudflare Workers Builds is connected to `dumpydon/glee`. Every push to `main` automatically builds, checks, and publishes the website to https://glee.dumpydon.workers.dev/.

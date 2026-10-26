@@ -2,14 +2,14 @@
   <!-- Copyright 2026 dumpydon. SPDX-License-Identifier: AGPL-3.0-only -->
   <defs>
     <linearGradient id="aluminum" x1="329" y1="76" x2="856" y2="391" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#60665f"/>
-      <stop offset=".4" stop-color="#393e3a"/>
-      <stop offset="1" stop-color="#222724"/>
+      <stop stop-color="#303b48"/>
+      <stop offset=".4" stop-color="#1c2733"/>
+      <stop offset="1" stop-color="#111922"/>
     </linearGradient>
     <linearGradient id="edge" x1="133" y1="272" x2="1073" y2="355" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#464d44"/>
-      <stop offset=".48" stop-color="#2d332e"/>
-      <stop offset="1" stop-color="#151a17"/>
+      <stop stop-color="#2b3744"/>
+      <stop offset=".48" stop-color="#1c2834"/>
+      <stop offset="1" stop-color="#111b27"/>
     </linearGradient>
     <linearGradient id="rim" x1="295" y1="118" x2="833" y2="401" gradientUnits="userSpaceOnUse">
       <stop stop-color="#c3cebb" stop-opacity=".55"/>
@@ -29,17 +29,17 @@
   <ellipse cx="601" cy="414" rx="454" ry="24" fill="#000" opacity=".65" filter="url(#shadow)"/>
 
   <!-- All layers follow the same lid outline: a rigid closed body, not a hinged screen. -->
-  <use href="#lid" transform="translate(0 22)" fill="#151a16" stroke="#080c09" stroke-width="2"/>
-  <path d="M1094 191v22c0 3-3 6-8 9L776 412c-11 7-23 9-37 6L123 293c-10-2-15-6-15-11v-22c0 5 5 9 15 11l616 125c14 3 26 1 37-6l310-191c5-3 8-5 8-8Z" fill="url(#edge)"/>
-  <path d="m119 280 620 126c14 3 26 1 37-6l312-192" stroke="#090e0a" stroke-width="3"/>
-  <path d="m126 289 613 124c14 3 25 1 36-6l306-188" stroke="#95a18d" stroke-opacity=".19" stroke-width="1.4"/>
+  <use href="#lid" transform="translate(0 13)" fill="#111b27" stroke="#080c09" stroke-width="2"/>
+  <path d="M1094 191v13c0 3-3 6-8 9L776 403c-11 7-23 9-37 6L123 284c-10-2-15-6-15-11v-13c0 5 5 9 15 11l616 125c14 3 26 1 37-6l310-191c5-3 8-5 8-8Z" fill="url(#edge)"/>
+  <path d="m119 275 620 126c14 3 26 1 37-6l312-192" stroke="#090e0a" stroke-width="2"/>
+  <path d="m126 281 613 124c14 3 25 1 36-6l306-188" stroke="#7c8ca0" stroke-opacity=".19" stroke-width="1.4"/>
 
   <use href="#lid" fill="url(#aluminum)"/>
   <use href="#lid" fill="url(#reflection)" stroke="url(#rim)" stroke-width="2"/>
   <path d="m409 334 94 19-7 3c-3 2-7 2-11 1l-67-14c-4-1-7-3-9-6Z" fill="#111712"/>
 
   <!-- A quiet engraved mark follows the same plane as the lid. -->
-  <g transform="matrix(.64 .13 -.507692 .315385 450 55)" fill="#1a211b" opacity=".65">
+  <g transform="matrix(.64 .13 -.507692 .315385 450 55)" fill="#080f18" opacity=".65">
     <ellipse cx="500" cy="304" rx="48" ry="13"/>
     <path d="M474 302c0-19 12-32 26-32s26 13 26 32Z"/>
     <path d="m486 319 14 12 14-12Z"/>

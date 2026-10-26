@@ -27,7 +27,7 @@ for(const path of pages){
     }
   }
 }
-for(const path of (await files(resolve(site,'download'))).filter(p=>p.endsWith('.js')))execFileSync(process.execPath,['--check',path])
+for(const path of (await files(resolve(root,'download'))).filter(p=>p.endsWith('.js')))execFileSync(process.execPath,['--check',path])
 execFileSync(process.execPath,['--check',resolve(site,'worker.js')])
 const release=JSON.parse(await readFile(resolve(site,'download/release.json'),'utf8'))
 if(!release.dmg.startsWith('https://github.com/dumpydon/glee/releases/download/'))errors.push('Unexpected download destination')
