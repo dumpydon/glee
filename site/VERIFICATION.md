@@ -44,3 +44,12 @@ Checked October 26, 2026 on the local site in Chrome.
 - Reviewed the closed-lid section at desktop size and phone viewports measuring 320 and 391 CSS pixels. The image loaded, the status card stayed below the laptop, and neither phone viewport had horizontal page overflow.
 - The illustration scales in the document flow without a fixed scene height. Temporary viewport overrides were reset after testing.
 - All 15 generated pages, local assets, scripts, release links, and the approved video checksum passed `npm run check`.
+
+## Rotating closed MacBook
+
+Checked October 26, 2026 on the local site in Chrome.
+
+- The closed chassis makes one smooth turn every 24 seconds. Its lid, seam, base, and engraving share a projection; the Glee artwork stays centered above it.
+- Observed changing angles across the turn, paused the model at 135 degrees, and confirmed it stayed still until Resume. Scrolling to FAQ stopped rendering; returning resumed from the same angle.
+- The 320-CSS-pixel phone layout had no horizontal overflow. Its pause/resume button measured 44 pixels, and the model stayed above the status card.
+- The renderer uses no additional libraries, stops when offscreen or the document is hidden, and retains the approved static SVG for reduced-motion preferences or unavailable JavaScript/canvas.

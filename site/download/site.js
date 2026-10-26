@@ -1,10 +1,12 @@
 // Copyright © 2026 dumpydon. SPDX-License-Identifier: AGPL-3.0-only
 // Presentation only: no analytics, accounts, persistence, or Mac power access.
 import {setupFilmPlayers} from './film-player.js'
+import {setupLaptopScenes} from './laptop-scene.js'
 const one=(s,r=document)=>r.querySelector(s)
 const all=(s,r=document)=>Array.from(r.querySelectorAll(s))
 const motion=matchMedia('(prefers-reduced-motion: reduce)')
 setupFilmPlayers()
+setupLaptopScenes()
 const nav=one('.navtoggle'),navMenu=one('#navmenu')
 function navClose(){navMenu?.classList.remove('on');nav?.setAttribute('aria-expanded','false')}
 nav?.addEventListener('click',()=>{const open=navMenu.classList.toggle('on');nav.setAttribute('aria-expanded',String(open))})

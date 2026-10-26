@@ -48,7 +48,16 @@
         <p class="lead">Set up the helper once, start a session, and wait for <b>Ready to close the lid</b>. Your Mac can keep working within your power, battery, and time limits.</p>
         <div class="lid-scene" aria-label="Illustration of a closed MacBook with an active Glee session">
           <div class="lid-halo"></div><img class="lid-art" src="assets/app-icon.png" alt="Glee’s hovering UFO and green liquid mark" width="140" height="140">
-          <img class="laptop" src="assets/closed-macbook.svg" alt="Closed laptop viewed from above, with a flat lid and aligned base" width="1200" height="480">
+          <div class="laptop-stage" data-laptop-scene>
+            <img class="laptop" src="assets/closed-macbook.svg" alt="Closed laptop viewed from above, with a flat lid and aligned base" width="1200" height="480">
+            <canvas class="laptop-canvas" width="1200" height="480" role="img" aria-label="Closed MacBook turning slowly beneath the Glee logo" hidden></canvas>
+            <button class="laptop-motion" type="button" aria-label="Pause laptop rotation" title="Pause rotation" hidden>
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+                <g data-motion-icon="pause"><path d="M8 6v12m8-12v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></g>
+                <g data-motion-icon="play" hidden><path d="m9 6 9 6-9 6Z" fill="currentColor"/></g>
+              </svg>
+            </button>
+          </div>
           <div class="ready-chip"><span>✓</span><div><b>Ready to close the lid</b><small>Within your battery and time limits.</small></div></div>
         </div>
         <p class="media-note">One-time administrator approval · Charger required by default · Four-hour continuous closed-lid limit</p>
